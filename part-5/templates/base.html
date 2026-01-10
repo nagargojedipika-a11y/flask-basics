@@ -11,18 +11,21 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            <a href="{{ url_for('home') }}">{{ info.name }}</a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Home</a></li>
-            <li><a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">About</a></li>
-            <li><a href="{{ url_for('projects') }}" class="{% if request.endpoint == 'projects' or request.endpoint == 'project_detail' %}active{% endif %}">Projects</a></li>
-            <li><a href="{{ url_for('contact') }}" class="{% if request.endpoint == 'contact' %}active{% endif %}">Contact</a></li>
-        </ul>
-    </nav>
+  <!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="nav-brand">
+        <a href="{{ url_for('home') }}">{{ info.name }}</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('projects') }}" class="{% if request.endpoint == 'projects' %}active{% endif %}">Projects</a></li>
+    
+      <li><a href="{{ url_for('blog') }}" class="{% if request.endpoint == 'blog' %}active{% endif %}">Blog</a></li>
+    
+      <li><a href="{{ url_for('contact') }}" class="{% if request.endpoint == 'contact' %}active{% endif %}">Contact</a></li>
+    </ul>
+</nav>
 
     <!-- Main Content Area -->
     <main class="container">
@@ -33,7 +36,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 {{ info.name }} | Built with Flask</p>
+        <p>&copy;2024 {{ info.name }} | Built with Flask</p>
         <p class="footer-note">
             This website is served by a Python Flask server!
         </p>

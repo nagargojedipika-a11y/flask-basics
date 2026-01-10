@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Add New Task</h2>
+
+<form method="POST">
+
+    <label>Task Title</label>
+    <input type="text" name="title" required>
+
+    <label>Status</label>
+    <select name="status">
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+    </select>
+
+    <label>Priority</label>
+    <select name="priority">
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+    </select>
+
+    <button type="submit">Add Task</button>
+
+</form>
+{% endblock %}

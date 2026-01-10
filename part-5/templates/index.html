@@ -25,7 +25,7 @@
             <li><strong>Part 1:</strong> Flask app setup and routing</li>
             <li><strong>Part 2:</strong> Templates with render_template()</li>
             <li><strong>Part 3:</strong> Jinja2 variables, loops, and conditionals</li>
-            <li><strong>Part 4:</strong> Dynamic routes (see individual project pages)</li>
+            <li><strong>Part 4:</strong> Dynamic routes</li>
             <li><strong>Part 5:</strong> Template inheritance and static files</li>
         </ul>
     </div>
@@ -37,6 +37,7 @@
     <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
         <a href="{{ url_for('about') }}" class="btn btn-secondary">About Me</a>
         <a href="{{ url_for('projects') }}" class="btn btn-secondary">My Projects</a>
+        <a href="{{ url_for('blog') }}" class="btn btn-secondary">Blog</a>
         <a href="{{ url_for('contact') }}" class="btn btn-secondary">Contact</a>
     </div>
 </div>

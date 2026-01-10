@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - Jinja2 Variables</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,6 +20,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         h1 { color: #2d3748; }
+
         nav {
             margin-bottom: 20px;
             padding: 10px;
@@ -32,6 +34,7 @@
             font-weight: bold;
         }
         nav a:hover { color: #2b6cb0; }
+
         .profile-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -39,30 +42,38 @@
             border-radius: 10px;
             margin: 20px 0;
         }
+
         .profile-card h2 {
             margin-top: 0;
             font-size: 28px;
         }
+
         .profile-item {
-            margin: 10px 0;
-            font-size: 16px;
+            margin: 8px 0;
+            font-size: 18px;
         }
+
         .profile-item span {
-            opacity: 0.8;
+            font-weight: bold;
         }
+
         .badge {
             display: inline-block;
             padding: 5px 15px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
+            margin-left: 5px;
         }
+
         .badge-success {
             background: #48bb78;
         }
+
         .badge-warning {
             background: #ed8936;
         }
+
         .code-example {
             background: #2d3748;
             color: #e2e8f0;
@@ -74,59 +85,77 @@
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <nav>
-            <a href="/">Home</a>
-            <a href="/profile">Profile</a>
-            <a href="/skills">Skills</a>
-            <a href="/projects">Projects</a>
-        </nav>
+<div class="container">
 
-        <h1>User Profile</h1>
-        <p>This page demonstrates passing multiple variables to a template.</p>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/profile">Profile</a>
+        <a href="/skills">Skills</a>
+        <a href="/projects">Projects</a>
+        <a href="/grades">Grades</a>
+    </nav>
 
-        <!-- Profile card using multiple variables -->
-        <div class="profile-card">
-            <h2>{{ name }}</h2>
-            <div class="profile-item">
-                <span>Age:</span> {{ age }} years old
-            </div>
-            <div class="profile-item">
-                <span>Course:</span> {{ course }}
-            </div>
-            <div class="profile-item">
-                <span>Status:</span>
-                <!-- Using Jinja2 conditional (if/else) -->
-                {% if is_enrolled %}
-                    <span class="badge badge-success">Enrolled</span>
-                {% else %}
-                    <span class="badge badge-warning">Not Enrolled</span>
-                {% endif %}
-            </div>
+    <h1>User Profile</h1>
+    <p>This page demonstrates passing multiple variables to a template.</p>
+
+    <!-- PROFILE CARD -->
+    <div class="profile-card">
+        <h2>{{ name }}</h2>
+
+        <div class="profile-item">
+            <span>Age:</span> {{ age }} years old
         </div>
 
-        <h2>How It Works</h2>
-        <p>In <code>app.py</code>, we pass multiple variables:</p>
+        <div class="profile-item">
+            <span>Course:</span> {{ course }}
+        </div>
 
-        <div class="code-example">
+        <div class="profile-item">
+            <span>Email:</span> {{ mail }}
+        </div>
+
+        <div class="profile-item">
+            <span>City:</span> {{ city }}
+        </div>
+
+        <!-- Exercise 3.2: Conditional display -->
+        <div class="profile-item">
+            <span>Status:</span>
+            {% if is_enrolled %}
+                <span class="badge badge-success">Enrolled</span>
+            {% else %}
+                <span class="badge badge-warning">Not Enrolled</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <h2>How It Works</h2>
+    <p>In <code>app.py</code>, we pass multiple variables:</p>
+
+    <div class="code-example">
 return render_template('profile.html',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;name='Sarah',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;age=22,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;course='Web Development',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;is_enrolled=True)
-        </div>
+&nbsp;&nbsp;&nbsp;&nbsp;name='Dipika',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;age=21,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;course='Deep Learning',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mail='nagargojedipika@gmail.com',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;city='Nashik',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;is_enrolled=True<br>
+)
+    </div>
 
-        <h2>Jinja2 Conditionals</h2>
-        <p>Notice the enrollment status badge? It uses a Jinja2 if-statement:</p>
+    <h2>Jinja2 Conditionals</h2>
+    <p>Notice the enrollment status badge? It uses a Jinja2 if-statement:</p>
 
-        <div class="code-example">
+    <div class="code-example">
 &#123;% if is_enrolled %&#125;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="badge-success"&gt;Enrolled&lt;/span&gt;<br>
 &#123;% else %&#125;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="badge-warning"&gt;Not Enrolled&lt;/span&gt;<br>
 &#123;% endif %&#125;
-        </div>
     </div>
+
+</div>
 </body>
 </html>

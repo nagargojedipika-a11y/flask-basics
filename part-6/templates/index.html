@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>All Tasks</h2>
+
+<ul>
+    {% for task in tasks %}
+    <li class="task-card">
+        <div>
+            <div class="task-title">{{ task.title }}</div>
+            <span class="status {{ task.status }}">{{ task.status }}</span>
+        </div>
+
+        <div class="task-actions">
+            <a class="btn view" href="{{ url_for('task_detail', id=task.id) }}">View</a>
+            <a class="btn edit" href="{{ url_for('edit_task', id=task.id) }}">Edit</a>
+
+            <form action="{{ url_for('delete_task', id=task.id) }}" method="POST" style="display:inline;">
+                <button class="btn delete" onclick="return confirm('Are you sure?')">
+                    Delete
+                </button>
+            </form>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

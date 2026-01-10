@@ -1,0 +1,107 @@
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #fbc2eb, #f9d3e3);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 35px rgba(0,0,0,.15);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #8b3d6a;
+}
+
+nav {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    margin: 0 8px;
+    padding: 8px 18px;
+    background: #f58db2;
+    color: white;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+ul { list-style: none; padding: 0; }
+
+.task-card {
+    background: rgba(255,255,255,0.45);
+    padding: 16px 20px;
+    border-radius: 18px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.status {
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: white;
+}
+
+.Pending { background: #ff6b81; }
+.Completed { background: #4cd964; }
+.In-Progress { background: #5b7cfa; }
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.view { background: #5b7cfa; }
+.edit { background: #3db8a0; }
+.delete { background: #ff6b81; }
+
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: none;
+}
+
+button {
+    background: #f58db2;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    margin-top: 25px;
+    color: #6b2d4f;
+}

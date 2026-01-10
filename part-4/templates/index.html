@@ -39,10 +39,7 @@
             padding: 20px;
             margin: 15px 0;
         }
-        .route-demo h3 {
-            margin-top: 0;
-            color: #2b6cb0;
-        }
+        .route-demo h3 { margin-top: 0; color: #2b6cb0; }
         .route-demo a {
             display: inline-block;
             margin: 5px 10px 5px 0;
@@ -52,9 +49,7 @@
             text-decoration: none;
             border-radius: 5px;
         }
-        .route-demo a:hover {
-            background: #3182ce;
-        }
+        .route-demo a:hover { background: #3182ce; }
         code {
             background: #edf2f7;
             padding: 2px 6px;
@@ -75,20 +70,41 @@
             padding: 15px;
             margin: 15px 0;
         }
+        .product-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+        .info-box {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .not-found {
+            background: #fed7d7;
+            border: 1px solid #fc8181;
+            color: #c53030;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <nav>
-            <a href="/">Home</a>
-            <a href="/about/">About</a>
-            <a href="/links">URL Builder</a>
+           <a href="{{ url_for('home') }}">Home</a>
+           <a href="{{ url_for('about') }}">About</a>
+           <a href="{{ url_for('show_links') }}">URL Builder</a>
+           <a href="{{ url_for('product_page', product_id=1) }}">Products</a>
         </nav>
 
         <h1>Dynamic Routes in Flask</h1>
         <p>Learn how to capture values from URLs using <code>&lt;variable&gt;</code> syntax!</p>
 
-        <!-- User Profile Demo -->
+        <!-- 1. User Profile Demo -->
         <div class="route-demo">
             <h3>1. User Profile Route</h3>
             <p>Route: <code>/user/&lt;username&gt;</code></p>
@@ -103,7 +119,7 @@
             <a href="/user/Charlie">Charlie</a>
         </div>
 
-        <!-- Post Demo -->
+        <!-- 2. Post Demo -->
         <div class="route-demo">
             <h3>2. Post Route (Integer Parameter)</h3>
             <p>Route: <code>/post/&lt;int:post_id&gt;</code></p>
@@ -119,7 +135,7 @@
             <a href="/post/99">Post 99 (Not Found)</a>
         </div>
 
-        <!-- Multiple Parameters Demo -->
+        <!-- 3. Multiple Parameters Demo -->
         <div class="route-demo">
             <h3>3. Multiple Parameters</h3>
             <p>Route: <code>/user/&lt;username&gt;/post/&lt;int:post_id&gt;</code></p>
@@ -137,6 +153,42 @@
                 <li><code>localhost:5000/user/YourName/post/1</code></li>
             </ul>
         </div>
+
+        <!-- 4. Category + Product Demo -->
+        {% if show_category_product %}
+        <div class="route-demo">
+            <h3>4. Category + Product Route</h3>
+            <p>Route: <code>/category/&lt;category_name&gt;/product/&lt;int:product_id&gt;</code></p>
+
+            {% if product %}
+                <div class="product-card">
+                    <h2>{{ product.name }}</h2>
+                    <p><strong>Price:</strong> ₹{{ product.price }}</p>
+                    <p><strong>Product ID:</strong> {{ product_id }}</p>
+                    <p><strong>Category:</strong> {{ category_name | title }}</p>
+                </div>
+
+                <div class="info-box">
+                    <p>This page was opened using:</p>
+                    <code>/category/{{ category_name }}/product/{{ product_id }}</code>
+                </div>
+            {% else %}
+                <div class="not-found">
+                    <h2>Product Not Found</h2>
+                    <p>Product ID {{ product_id }} does not exist in category "{{ category_name }}"</p>
+                </div>
+            {% endif %}
+
+            <p><strong>Try it:</strong></p>
+            <a href="/category/electronics/product/1">Electronics - Mobile Phone</a>
+            <a href="/category/electronics/product/2">Electronics - Laptop</a>
+            <a href="/category/clothing/product/1">Clothing - T-Shirt</a>
+            <a href="/category/clothing/product/2">Clothing - Jeans</a>
+            <a href="/category/clothing/product/3">Invalid Product</a>
+        </div>
+        {% endif %}
+
     </div>
+    
 </body>
 </html>
